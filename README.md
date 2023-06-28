@@ -16,6 +16,8 @@ Each dataset contains the following fields:
 - `geoRegion` The code for the respective canton or all of Switzerland, see [here](https://www.covid19.admin.ch/api/data/documentation/models/sources-definitions-dailyincomingdata.md#georegion).
 - `total` The cumulative number of events on `date_X` that have so far been reported until `date_report`. Ideally, this number should be strictly increasing over time. This is however not guaranteed, see [Caveats](#caveats).
 
+Note that to reduce the size of the datasets, we only include reporting dates on which the entry for a specific event date was updated. For example, if the case count for a specific date changes on Friday and remains unchanged over the weekend, then Saturday and Sunday are not shown in the dataset, as they are identical to the entry on Friday. They can be easily reconstructed of course.
+
 ## Coverage
 The recording starts at `2020-11-05` (first available snapshot). The time series resolution is daily, but updates are not published by FOPH every day: Until `2022-04-01`, a daily reporting schedule except for weekends was used. After that, a weekly reporting schedule was used, with the new report being published every Tuesday.
 
